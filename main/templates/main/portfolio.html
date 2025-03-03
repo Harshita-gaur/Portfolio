@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+   <!-- Navigation -->
+    <nav>
+        <div class="logo">My Portfolio</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hello! I'm a full-stack developer passionate about Django.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a full-stack developer specializing in Django and web development.</p>
+        <p>Check out my work:</p>
+        <ul>
+            <li><a href="https://github.com/YOUR-GITHUB" target="_blank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a></li>
+            <li><a href="https://your-portfolio.com/resume.pdf" target="_blank">Download Resume</a></li>
+        </ul>
+    </section>
+
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill.name }}</li>
+            {% empty %}
+                <p>No skills added yet.</p>
+            {% endfor %}
+        </ul>
+    </section>
+
+   <!-- Projects Section -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <ul>
+            {% for project in projects %}
+                <li>
+                    <strong>{{ project.title }}</strong> - {{ project.description }}
+                    {% if project.link %}
+                        <a href="{{ project.link }}" target="_blank">View Project</a>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <p>No projects added yet.</p>
+            {% endfor %}
+        </ul>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+
+</body>
+</html>

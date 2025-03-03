@@ -1,34 +1,41 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Harshita Gaur</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
+    <div id="particles-js"></div>
+
 
    <!-- Navigation -->
     <nav>
-        <div class="logo">My Portfolio</div>
+        <div class="nav-toggle">☰</div>
+
+        <div class="logo">Harshita Gaur</div>
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
-            <!-- Dark Mode Toggle Button -->
             <button id="dark-mode-toggle">🌙 Toggle Dark Mode</button>
+
 
         </div>
     </nav>
+    <!-- <canvas id="snowfall"></canvas> -->
 
 
     <!-- Home Section -->
     <section id="home">
         <h1>Welcome to My Portfolio</h1>
-        <p>Hello! I'm a full-stack developer passionate about Django.</p>
+        <p>A versatile full-stack developer with expertise in building seamless web applications, specializing in Django, React, and modern web technologies.</p>
     </section>
 
     <!-- About Section -->
@@ -37,9 +44,9 @@
         <p>I am a full-stack developer specializing in Django and web development.</p>
         <p>Check out my work:</p>
         <ul>
-            <li><a href="https://github.com/YOUR-GITHUB" target="_blank">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a></li>
-            <li><a href="{% static 'docs/resume.pdf' %}" download="My_Resume.pdf"><button>Download Resume</button></a></li>
+            <li><a href="https://github.com/Harshita-gaur" target="_blank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/harshita-gaur/" target="_blank">LinkedIn</a></li>
+            <li><a href="{% static 'docs/resume.pdf' %}" download="Harshita_Gaur_Resume.pdf"><button>Download Resume</button></a></li>
         </ul>
     </section>
 
@@ -47,13 +54,21 @@
     <!-- Skills Section -->
     <section id="skills" class="fade-in">
         <h2>Skills</h2>
-        <ul>
+        <div class="skills-container">
             {% for skill in skills %}
-                <li>{{ skill.name }}</li>
+                <div class="skill-item">
+                    <span class="skill-name">{{ skill.name }}</span>
+
+                    <!-- Proficiency Slider -->
+                    <input type="range" min="0" max="100" value="{{ skill.proficiency }}" disabled class="skill-slider">
+                    
+                    <!-- Skill Level Label -->
+                    <span class="skill-level">{{ skill.get_level_display }}</span>
+                </div>
             {% empty %}
                 <p>No skills added yet.</p>
             {% endfor %}
-        </ul>
+        </div>
     </section>
 
    <!-- Projects Section -->
@@ -62,7 +77,7 @@
         <ul>
             {% for project in projects %}
                 <li>
-                    <strong>{{ project.title }}</strong> - {{ project.description }}
+                    <strong>{{ project.title }}</strong> - {{ project.description }}<br>
                     {% if project.link %}
                         <a href="{{ project.link }}" target="_blank">View Project</a>
                     {% endif %}
@@ -85,6 +100,9 @@
     </section>
 
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{% static 'js/particles.js' %}"></script>
+
 
 </body>
 </html>

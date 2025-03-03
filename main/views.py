@@ -1,10 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import Project, ContactMessage, Skill
 from .forms import ContactForm
 
 def portfolio(request):
     projects = Project.objects.all()
-    skills = Skill.objects.all() 
+    skills = Skill.objects.all()  
     form = ContactForm()
 
     if request.method == "POST":

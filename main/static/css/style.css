@@ -6,10 +6,9 @@ body {
     background-color: #f5f5f5;
     text-align: center;
     color: #333;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-/* Navbar Styling */
 nav {
     background: #333;
     color: white;
@@ -22,7 +21,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.5s ease-in-out;
 }
 
 .nav-links a {
@@ -30,7 +29,7 @@ nav {
     margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.5s ease-in-out;
 }
 
 .nav-links a:hover {
@@ -44,9 +43,10 @@ section {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
+    width: 90%;
     margin: 60px auto;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    max-width: 900px;
 }
 
 /* Fade-in Animations */
@@ -65,6 +65,11 @@ section {
 #skills ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
 }
 
 #skills li {
@@ -75,11 +80,19 @@ section {
     margin: 5px;
     border-radius: 5px;
     font-size: 16px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 
 #skills li:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
 }
 
 /* Buttons */
@@ -91,18 +104,24 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    transition: background 0.5s ease-in-out, transform 0.2s ease-in-out;
 }
 
 button:hover {
     background: #0056b3;
     transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
 /* Resume Download Button */
 a button {
     display: inline-block;
     text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Dark Mode Styling */
@@ -146,3 +165,127 @@ a.dark-mode {
 a.dark-mode:hover {
     color: #e6b800;
 }
+
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* Skills Section */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 80%;
+    margin: auto;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.skill-name {
+    font-size: 18px;
+    font-weight: bold;
+    width: 150px;
+    text-align: left;
+}
+
+/* Proficiency Slider */
+.skill-slider {
+    width: 50%;
+    height: 8px;
+    -webkit-appearance: none;
+    background: linear-gradient(to right, #4caf50, #ff9800);
+    border-radius: 5px;
+    outline: none;
+}
+
+.skill-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Skill Level Label */
+.skill-level {
+    font-weight: bold;
+    width: 120px;
+    text-align: right;
+}
+
+/* Beginner (Red), Intermediate (Orange), Expert (Green) */
+.skill-level::before {
+    content: "• ";
+}
+
+.skill-level:contains("Beginner") {
+    color: red;
+}
+
+.skill-level:contains("Intermediate") {
+    color: orange;
+}
+
+.skill-level:contains("Expert") {
+    color: green;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a; 
+    z-index: -1;
+}
+/* #snowfall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: -1;
+    /* background: linear-gradient(to bottom, #1e3c72, #2a5298);  */
+    /* background-color: black; */
+/* } */ 

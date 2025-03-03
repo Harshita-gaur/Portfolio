@@ -1,0 +1,194 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    text-align: center;
+    color: #333;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Navbar Styling */
+nav {
+    background: #333;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: background 0.5s ease-in-out;
+}
+
+.nav-links a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.5s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+}
+
+/* Sections Styling */
+section {
+    padding: 80px 20px;
+    margin-top: 50px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 60px auto;
+    transition: transform 0.5s ease-in-out;
+    max-width: 900px;
+}
+
+/* Fade-in Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skills List */
+#skills ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+#skills li {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: transform 0.5s ease-in-out;
+}
+
+#skills li:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttons */
+button {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.5s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+/* Resume Download Button */
+a button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Dark Mode Styling */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+/* Dark Mode Navbar */
+nav.dark-mode {
+    background: #222;
+}
+
+/* Dark Mode Sections */
+section.dark-mode {
+    background: #2a2a2a;
+    color: #f0f0f0;
+}
+
+/* Dark Mode Buttons */
+button.dark-mode {
+    background: #ffcc00;
+    color: black;
+}
+
+button.dark-mode:hover {
+    background: #e6b800;
+}
+
+/* Dark Mode Skills */
+#skills li.dark-mode {
+    background: #ffcc00;
+    color: black;
+}
+
+/* Dark Mode Links */
+a.dark-mode {
+    color: #ffcc00;
+}
+
+a.dark-mode:hover {
+    color: #e6b800;
+}
+
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}

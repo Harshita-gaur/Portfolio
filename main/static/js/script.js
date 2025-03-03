@@ -55,3 +55,28 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("dark-mode", "disabled"); 
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    navToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+});
+
+// canvas.addEventListener("mousemove", function (event) {
+//     let mouseX = event.clientX;
+//     let mouseY = event.clientY;
+
+//     snowflakes.forEach((flake) => {
+//         let dx = flake.x - mouseX;
+//         let dy = flake.y - mouseY;
+//         let distance = Math.sqrt(dx * dx + dy * dy);
+
+//         if (distance < 50) {
+//             flake.x += dx * 0.1; 
+//             flake.y += dy * 0.1;
+//         }
+//     });
+// });

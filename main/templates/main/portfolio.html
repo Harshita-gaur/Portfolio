@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +18,9 @@
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
+            <!-- Dark Mode Toggle Button -->
+            <button id="dark-mode-toggle">🌙 Toggle Dark Mode</button>
+
         </div>
     </nav>
 
@@ -28,20 +32,20 @@
     </section>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class="fade-in">
         <h2>About Me</h2>
         <p>I am a full-stack developer specializing in Django and web development.</p>
         <p>Check out my work:</p>
         <ul>
             <li><a href="https://github.com/YOUR-GITHUB" target="_blank">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a></li>
-            <li><a href="https://your-portfolio.com/resume.pdf" target="_blank">Download Resume</a></li>
+            <li><a href="{% static 'docs/resume.pdf' %}" download="My_Resume.pdf"><button>Download Resume</button></a></li>
         </ul>
     </section>
 
 
     <!-- Skills Section -->
-    <section id="skills">
+    <section id="skills" class="fade-in">
         <h2>Skills</h2>
         <ul>
             {% for skill in skills %}
@@ -53,7 +57,7 @@
     </section>
 
    <!-- Projects Section -->
-    <section id="projects">
+    <section id="projects" class="fade-in">
         <h2>My Projects</h2>
         <ul>
             {% for project in projects %}
@@ -71,7 +75,7 @@
 
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="fade-in">
         <h2>Contact Me</h2>
         <form method="POST">
             {% csrf_token %}
@@ -80,6 +84,7 @@
         </form>
     </section>
 
+    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 </html>

@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-ljn%66s=g@oy#xvsilguz-7e!*7k_#m7!j=p2cd))q73j5go10
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1', 
+    'localhost',   
+    'harshitagaur.pythonanywhere.com'
+]
 
 
 # Application definition
@@ -127,4 +131,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = ['harshitagur.pythonanywhere.com']
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  

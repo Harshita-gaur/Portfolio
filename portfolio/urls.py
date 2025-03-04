@@ -16,8 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
+import subprocess
+
+def update_code(request):
+    if request.method == "POST":
+        subprocess.run(["/bin/bash", "/home/harshitagaur/update_site.sh"])
+        return JsonResponse({"status": "Success"}, status=200)
+    return JsonResponse({"status": "Failed"}, status=400)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
+    path("update/", update_code)
 ]

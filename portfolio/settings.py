@@ -32,7 +32,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1', 
     'localhost',   
-    'harshitagaur.pythonanywhere.com'
+    # 'harshitagaur.pythonanywhere.com',
+    "portfolio-xroz.onrender.com"
 ]
 
 

@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const isDarkMode = localStorage.getItem("dark-mode") === "enabled";
+    setParticles(isDarkMode);
+});
+
+// Attach `loadParticles` to the global `window` object
+window.setParticles = function (isDarkMode) {
     particlesJS("particles-js", {
         particles: {
             number: { value: 100, density: { enable: true, value_area: 800 } },
-            color: { value: "#ffffff" }, // White particles
+            color: { value: isDarkMode ? "#ffffff" : "#000000" }, 
             shape: { type: "circle" },
             opacity: { value: 0.5, random: true },
             size: { value: 3, random: true },
@@ -19,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
-});
+};
+
 
 // document.addEventListener("DOMContentLoaded", function () {
 //     const canvas = document.getElementById("snowfall");
@@ -98,3 +105,16 @@ document.addEventListener("DOMContentLoaded", function () {
 //         createSnowflakes(1000);
 //     });
 // });
+
+
+/* #snowfall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: -1;
+    /* background: linear-gradient(to bottom, #1e3c72, #2a5298);  */
+    /* background-color: black; */
+/* } */ 

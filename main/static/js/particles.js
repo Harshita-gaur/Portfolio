@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const isDarkMode = localStorage.getItem("dark-mode") === "enabled";
+    window.loadParticles(isDarkMode);
+});
+
+// Attach `loadParticles` to the global `window` object
+window.loadParticles = function (isDarkMode) {
     particlesJS("particles-js", {
         particles: {
             number: { value: 100, density: { enable: true, value_area: 800 } },
-            color: { value: "#ffffff" }, // White particles
+            color: { value: isDarkMode ? "#ffffff" : "#000000" }, 
             shape: { type: "circle" },
             opacity: { value: 0.5, random: true },
             size: { value: 3, random: true },
@@ -19,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
-});
+};
+
 
 // document.addEventListener("DOMContentLoaded", function () {
 //     const canvas = document.getElementById("snowfall");

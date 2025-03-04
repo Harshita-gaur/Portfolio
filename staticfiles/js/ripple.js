@@ -1,41 +1,98 @@
-// document.addEventListener("mousemove", function (e) {
-//     console.log("Mouse moved:", e.clientX, e.clientY);  // Debug log
+/* 
 
-//     const rippleContainer = document.getElementById("ripple-container");
-//     if (!rippleContainer) {
-//         console.log("Ripple container not found!");
-//         return;
-//     }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
 
-//     const ripple = document.createElement("div");
-//     ripple.classList.add("ripple");
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    text-align: center;
+    color: #333;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+} */
 
-//     // Set size and position
-//     const size = 50;
-//     ripple.style.width = `${size}px`;
-//     ripple.style.height = `${size}px`;
-//     ripple.style.left = `${e.clientX - size / 2}px`;
-//     ripple.style.top = `${e.clientY - size / 2}px`;
+/* #ripple-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
 
-//     console.log("Ripple added at:", ripple.style.left, ripple.style.top);
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color:rgba(255, 255, 255, 0.2);
+    opacity: 1;
+    /* pointer-events: none; */
+    /* transform: scale(0);
+    animation: ripple-animation 1.5s ease-out forwards;
+}
 
-//     rippleContainer.appendChild(ripple);
+@keyframes ripple-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(5);
+        opacity: 0;
+    }
+} */ 
 
-//     setTimeout(() => {
-//         ripple.remove();
-//     }, 1500);
-// });
+
+
+
+
+
+/* #ripple-background{
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    background-color: black; 
+} */
+
+
+// <!-- jQuery (Required for the plugin) -->
+        
+// <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+// <!-- Ripple Plugin -->
+
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
+
+
+// <script src="{% static 'js/ripple.js' %}"></script>
+
+
+<div id="ripple-background"></div>
+
 
 $(document).ready(function () {
-    if ($.fn.ripples) {
-        console.log("Ripples plugin loaded successfully!");
-        $("body").ripples({
-            resolution: 512,
-            dropRadius: 20, 
-            perturbance: 0.04,
-        });
-    } else {
-        console.log("Ripples plugin not loaded!");
-    }
+    $('body').ripples({
+        resolution: 512,   
+        dropRadius: 25,   
+        perturbance: 0.1,  
+        interactive: true  
+    });
+
+    // Ripple effect on mouse click
+    $(document).on('click', function (e) {
+        let x = e.pageX;
+        let y = e.pageY;
+        let dropRadius = 30;  
+        let strength = 0.2;   
+
+        $('body').ripples('drop', x, y, dropRadius, strength);
+    });
 });
 

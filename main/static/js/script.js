@@ -1,6 +1,79 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const fadeElements = document.querySelectorAll(".fade-in");
+    const toggleButton = document.getElementById("dark-mode-toggle");
+    const body = document.body;
+    const nav = document.querySelector("nav");
+    const elementsToToggle = document.querySelectorAll("section, button, a");
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    const particlesContainer = document.getElementById("particles-js");
 
+    // Function to enable/disable dark mode
+    function setDarkMode(enabled) {
+        body.classList.toggle("dark-mode", enabled);
+        nav.classList.toggle("dark-mode", enabled);
+        elementsToToggle.forEach(el => el.classList.toggle("dark-mode", enabled));
+
+        // Set background color for particles
+        particlesContainer.style.backgroundColor = enabled ? "#1a1a1a" : "#ffffff";
+
+        // Save dark mode preference
+        localStorage.setItem("dark-mode", enabled ? "enabled" : "disabled");
+
+        // Reload particles with correct colors
+        reloadParticles(enabled);
+    }
+
+    // Function to reload particles when switching modes
+    function reloadParticles(isDarkMode) {
+        // Remove the existing particles container content
+        particlesContainer.innerHTML = "";
+
+        // Reinitialize particles.js with new colors
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: isDarkMode ? "#ffffff" : "#000000" }, // White in dark mode, black in light mode
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                move: { speed: 2, direction: "none", out_mode: "out" },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: isDarkMode ? "#ffffff" : "#000000", // Change line color based on mode
+                    opacity: 0.4,
+                    width: 1
+                }
+            },
+            interactivity: {
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                },
+                modes: {
+                    repulse: { distance: 100, duration: 0.4 },
+                    push: { particles_nb: 4 }
+                }
+            }
+        });
+    }
+
+    // Initialize Dark Mode based on localStorage
+    const isDarkMode = localStorage.getItem("dark-mode") === "enabled";
+    setDarkMode(isDarkMode);
+
+    // Toggle Dark Mode on button click
+    toggleButton.addEventListener("click", function () {
+        setDarkMode(!body.classList.contains("dark-mode"));
+    });
+
+    // Mobile Navigation Toggle
+    navToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+
+    // Intersection Observer for Fade-in Animations
+    const fadeElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -10,73 +83,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, { threshold: 0.2 });
 
-    fadeElements.forEach(element => {
-        observer.observe(element);
-    });
+    fadeElements.forEach(element => observer.observe(element));
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-    const toggleButton = document.getElementById("dark-mode-toggle");
-    const body = document.body;
-    const sections = document.querySelectorAll("section");
-    const buttons = document.querySelectorAll("button");
-    const links = document.querySelectorAll("a");
-    const nav = document.querySelector("nav");
-
-    if (localStorage.getItem("dark-mode") === "enabled") {
-        enableDarkMode();
-    }
-
-    toggleButton.addEventListener("click", function () {
-        if (body.classList.contains("dark-mode")) {
-            disableDarkMode();
-        } else {
-            enableDarkMode();
-        }
-    });
-
-    function enableDarkMode() {
-        body.classList.add("dark-mode");
-        nav.classList.add("dark-mode");
-        sections.forEach(section => section.classList.add("dark-mode"));
-        buttons.forEach(button => button.classList.add("dark-mode"));
-        links.forEach(link => link.classList.add("dark-mode"));
-
-        localStorage.setItem("dark-mode", "enabled"); 
-    }
-
-    function disableDarkMode() {
-        body.classList.remove("dark-mode");
-        nav.classList.remove("dark-mode");
-        sections.forEach(section => section.classList.remove("dark-mode"));
-        buttons.forEach(button => button.classList.remove("dark-mode"));
-        links.forEach(link => link.classList.remove("dark-mode"));
-
-        localStorage.setItem("dark-mode", "disabled"); 
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const navToggle = document.querySelector(".nav-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    navToggle.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-    });
-});
-
-// canvas.addEventListener("mousemove", function (event) {
-//     let mouseX = event.clientX;
-//     let mouseY = event.clientY;
-
-//     snowflakes.forEach((flake) => {
-//         let dx = flake.x - mouseX;
-//         let dy = flake.y - mouseY;
-//         let distance = Math.sqrt(dx * dx + dy * dy);
-
-//         if (distance < 50) {
-//             flake.x += dx * 0.1; 
-//             flake.y += dy * 0.1;
-//         }
-//     });
-// });

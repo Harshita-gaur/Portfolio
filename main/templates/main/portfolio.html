@@ -79,19 +79,31 @@
    <!-- Projects Section -->
     <section id="projects" class="fade-in">
         <h2>My Projects</h2>
-        <ul>
-            {% for project in projects %}
-                <li>
-                    <strong>{{ project.title }}</strong> - {{ project.description }}<br>
-                    {% if project.link %}
-                        <a href="{{ project.link }}" target="_blank">View Project</a>
-                    {% endif %}
-                </li>
-            {% empty %}
-                <p>No projects added yet.</p>
-            {% endfor %}
-        </ul>
+        <div class="project-carousel">
+            <div class="project-cards">
+                {% for project in projects %}
+                    <div class="project-card">
+                        <h3>{{ project.title }}</h3>
+                        <h4>{{ project.techstack }}</h4>
+                        <p>{{ project.description }}</p>
+                        {% if project.link %}
+                            <a href="{{ project.link }}" target="_blank">View Project</a>
+                        {% endif %}
+                    </div>
+                {% empty %}
+                    <p>No projects added yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="slide-buttons">
+            <button id="slide-left">←</button>
+            <button id="slide-right">→</button>
+        </div>        
+        <div class="project-count">
+            <p>Total Projects: {{ projects.count }}</p>
+        </div>
     </section>
+    
 
 
     <!-- Contact Section -->

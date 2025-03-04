@@ -98,16 +98,3 @@ document.addEventListener("DOMContentLoaded", function () {
 //         createSnowflakes(1000);
 //     });
 // });
-
-
-/* #snowfall {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; 
-    z-index: -1;
-    /* background: linear-gradient(to bottom, #1e3c72, #2a5298);  */
-    /* background-color: black; */
-/* } */ 

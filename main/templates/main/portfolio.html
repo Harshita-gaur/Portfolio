@@ -7,34 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harshita Gaur</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
 <body>
     <div id="particles-js"></div>
+    <!-- <div id="ripple-container"></div> -->
+    <!-- <canvas id="snowfall"></canvas> -->
 
 
    <!-- Navigation -->
-    <nav>
-        <div class="nav-toggle">☰</div>
-
+   <nav>
+    <div class="nav-left">
+        <button id="dark-mode-toggle">🌙 </button>
         <div class="logo">Harshita Gaur</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <button id="dark-mode-toggle">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="{% static 'docs/resume.pdf' %}" download="Harshita_Gaur_Resume.pdf" class="resume-button">Download Resume</a>
+    </div>
+</nav>
 
-
-        </div>
-    </nav>
-    <!-- <canvas id="snowfall"></canvas> -->
 
 
     <!-- Home Section -->
     <section id="home">
-        <h1>Welcome to My Portfolio</h1>
+        <h1>Harshita Gaur</h1>
         <p>A versatile full-stack developer with expertise in building seamless web applications, specializing in Django, React, and modern web technologies.</p>
     </section>
 
@@ -42,13 +41,18 @@
     <section id="about" class="fade-in">
         <h2>About Me</h2>
         <p>I am a full-stack developer specializing in Django and web development.</p>
-        <p>Check out my work:</p>
-        <ul>
-            <li><a href="https://github.com/Harshita-gaur" target="_blank">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/harshita-gaur/" target="_blank">LinkedIn</a></li>
-            <li><a href="{% static 'docs/resume.pdf' %}" download="Harshita_Gaur_Resume.pdf"><button>Download Resume</button></a></li>
-        </ul>
+
+    
+        <div class="links-grid">
+            <a href="https://github.com/Harshita-gaur" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/harshita-gaur/" target="_blank">LinkedIn</a>
+            <a href="https://leetcode.com/u/cpbeginning441/" target="_blank">LeetCode</a>
+            <a href="https://codeforces.com/profile/twin_brain" target="_blank">Codeforces</a>
+            <a href="https://www.codechef.com/users/mrchirpy" target="_blank">CodeChef</a>
+            <a href="https://www.hackerrank.com/profile/harshita_gaur" target="_blank">HackerRank</a>
+        </div>
     </section>
+    
 
 
     <!-- Skills Section -->
@@ -100,9 +104,8 @@
     </section>
 
     <script src="{% static 'js/script.js' %}"></script>
+
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="{% static 'js/particles.js' %}"></script>
-
-
 </body>
 </html>
